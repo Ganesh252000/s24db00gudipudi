@@ -8,7 +8,7 @@ block content
     div.row(class='mb-2')
         div.mr-1 ID is
         div #{jackets_id}
-    - let actionid = "/resource/jackets/" + dogcookies_id
+    - let actionid = "/resource/jackets/" + jacketsid
     form(id='jacketsForm', action= actionid, method="PUT")
         div.form-group
         label.jacketAttr(for='jacket_name') jackets name
