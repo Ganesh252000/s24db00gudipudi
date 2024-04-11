@@ -1,0 +1,31 @@
+extends layout
+block content
+  h1= title
+  form(id='jacketsfrom', action="/resource/jackets", method="POST")
+    div.form-group
+      label.jacketAttr(for='jacket_name')  jackets type
+      input#jacket_name(type='text', name='jacket_name')
+    div.form-group
+      label.jacketAttr(for='jacket_brand') jackets for
+      input#jacket_brand(type='text', name='jacket_brand')
+    div.form-group
+      label.jacketAttr(for='cost') cost
+      input#cost(type='number', name='cost')
+    input(type="submit")
+  script.
+    document.forms['jacketsfrom'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });

@@ -1,0 +1,39 @@
+extends layout
+block content
+  h1= title
+    - let jacketsid = toShow._id
+    - let jackets_name = toShow.jackets_name
+    - let jackets_for = toShow.jackets_for
+    - let cost = toShow.cost
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{jackets_id}
+    - let actionid = "/resource/jackets/" + dogcookies_id
+    form(id='jacketsForm', action= actionid, method="PUT")
+        div.form-group
+        label.jacketAttr(for='jacket_name') jackets name
+        input#jacket_name(type='text', name='jacket_name', value= jacket_name )
+        div.form-group
+        label.jacketAttr(for='jacket_for') jackets for
+        input#jacket_for(type='text', name='jacket_for', value= jackets_for )
+        div.form-group
+        label.jacketAttr(for='cost') jackets cost
+        input#cost(type='number', name='cost', value= cost )
+        input(type="submit")(style="color:red; background-color:yellow;")
+    script.
+        document.forms['jacketsForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+            method: 'PUT',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+            return resp.text(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+            alert("Update succeeded")
+            // TODO handle body
+        }).catch((error) => {
+            // TODO handle error
+            alert("Update failed " + error )
+        });
+        });
