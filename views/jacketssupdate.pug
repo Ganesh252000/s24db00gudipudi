@@ -1,6 +1,9 @@
 extends layout
 block content
-  h1= title
+    h1= title
+    if (toShow == null)
+       h2 No instance to update
+    else
     - let jacketsid = toShow._id
     - let jackets_name = toShow.jackets_name
     - let jackets_for = toShow.jackets_for

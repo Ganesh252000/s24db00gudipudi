@@ -1,6 +1,9 @@
 extends layout
 block content
     h1= title
+    if (toShow == null)
+       h2 No instance to detail
+    else
     - let jacketid = toShow._id
     - let jacket_name = toShow.jacket_name
     - let jacket_brand = toShow.jacket_brand
