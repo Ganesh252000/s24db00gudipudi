@@ -38,7 +38,7 @@ block content
         fetch(actionid, {
           method: 'DELETE' // Don't need a body for the delete
         }).then((resp) => {
-          return resp.json(); // or resp.text() or whatever the server sends
+          return resp.text(); // or resp.text() or whatever the server sends
         }).then((body) => {
           alert("Delete succeeded")
           window.location.href='/jacket'
