@@ -22,7 +22,7 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
 res.redirect('/');
 });
 router.get('/update',secured, jackets_controlers.jackets_update_Page);
-router.get('/delete', jackets_controlers.jackets_delete_Page);
+router.get('/delete',secured, jackets_controlers.jackets_delete_Page);
 
 module.exports = router;
 
