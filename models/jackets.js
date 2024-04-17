@@ -7,10 +7,10 @@ jacket_brand: {
     maxlength:20,
 },
 cost: {
-    type: Number,
-    min:1,
-    max:1000
-}
+        type: Number,
+        min:1,
+        max:1000
+    }
 })
 module.exports = mongoose.model("jackets",
 jacketsSchema)
