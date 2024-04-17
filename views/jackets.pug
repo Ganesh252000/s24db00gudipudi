@@ -2,13 +2,19 @@ extends layout
 
 block content
   h1= title
+  - let destinaion = `dispatch(\"/jackets/create")`
+  button.btn(class="btn-primary ml-1", onclick=destinaion) create
   - let items = results
   div(class="container-fluid")
-    div(class="row")
+    div(class="row m-1")
       each item in items
         - let destination = `dispatch(\"/jackets/update?id=${item._id}\")`
+        - let destinatin = `dispatch(\"/jackets/delete?id=${item._id}\")`
+        - let destinaton = `dispatch(\"/jackets/detail?id=${item._id}\")`
         div(class="row-sm-2", class="m-1") Item #{item.jacket_name}(#{item.jacket_brand}) is #{item.cost}
           button.btn(class="btn-primary ml-1", onclick=destination) Update
+          button.btn(class="btn-primary ml-1", onclick=destinatin) Delete
+          button.btn(class="btn-primary ml-1", onclick=destinaton) Detail
   script.
     function dispatch(path) {
         window.location.href = path;

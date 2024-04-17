@@ -5,24 +5,24 @@ block content
        h2 No instance to update
     else
     - let jacketsid = toShow._id
-    - let jackets_name = toShow.jackets_name
-    - let jackets_for = toShow.jackets_for
+    - let jacket_name = toShow.jacket_name
+    - let jacket_brand = toShow.jacket_brand
     - let cost = toShow.cost
     div.row(class='mb-2')
         div.mr-1 ID is
-        div #{jackets_id}
+        div #{jacketsid}
     - let actionid = "/resource/jackets/" + jacketsid
     form(id='jacketsForm', action= actionid, method="PUT")
         div.form-group
         label.jacketAttr(for='jacket_name') jackets name
         input#jacket_name(type='text', name='jacket_name', value= jacket_name )
         div.form-group
-        label.jacketAttr(for='jacket_for') jackets for
-        input#jacket_for(type='text', name='jacket_for', value= jackets_for )
+        label.jacketAttr(for='jacket_brand') jackets brand
+        input#jacket_brand(type='text', name='jacket_brand', value= jacket_brand )
         div.form-group
         label.jacketAttr(for='cost') jackets cost
         input#cost(type='number', name='cost', value= cost )
-        input(type="submit")(style="color:red; background-color:yellow;")
+        input(type="submit")
     script.
         document.forms['jacketsForm'].addEventListener('submit', (event) => {
         event.preventDefault();
